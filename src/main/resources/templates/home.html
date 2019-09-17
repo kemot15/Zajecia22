@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Schronisko</title>
+</head>
+
+<div th:replace="fragments::myHeader"></div>
+
+
+
+<div th:each="pet:${pets}">
+<!-- <a  th:href="@{|/zwierzak?imie=${pet.getName()}|}" > -->
+<a  th:href="'zwierzak?imie=' + ${pet.getName()}" >
+    <img  th:src="${pet.getImg()}">
+    <p th:text="${pet.getName()}"></p>
+</a>
+</div>
+
+
+
+
+
+</body>
+</html>
