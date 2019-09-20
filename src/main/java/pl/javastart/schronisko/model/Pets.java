@@ -4,14 +4,16 @@ public class Pets {
     private String name;
     private String info;
     private String img;
+    private Category category;
 
     public Pets() {
     }
 
-    public Pets(String name, String info, String img) {
+    public Pets(String name, String info, String img, Category category) {
         this.name = name;
         this.info = info;
         this.img = img;
+        this.category = category;
     }
 
     public String getName() {
@@ -36,5 +38,13 @@ public class Pets {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

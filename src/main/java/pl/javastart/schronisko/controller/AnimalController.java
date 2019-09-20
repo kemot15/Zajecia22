@@ -6,26 +6,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.javastart.schronisko.model.Category;
 import pl.javastart.schronisko.model.Pets;
 import pl.javastart.schronisko.repository.PetsRepository;
 
 import javax.validation.constraints.Null;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
-
 public class AnimalController {
 
     private PetsRepository petsRepository;
+  //  private Category category;
 
     public AnimalController(PetsRepository petsRepository) {
         this.petsRepository = petsRepository;
     }
 
     @GetMapping ("/")
-    public String home (Model model){
-        List<Pets> petsList = petsRepository.getPetsList();
+    public String home (Model model, @RequestParam (required = false) Category category){
+        List<Pets> petsList = petsRepository.showPetsListByCategory(category);
         model.addAttribute("pets", petsList);
         return "home";
     }
