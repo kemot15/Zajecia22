@@ -57,4 +57,14 @@ public class PetsRepository {
     public void addPetToList (Pets pet){
         petsList.add(pet);
     }
+
+    public void editPet (Pets pet){
+        for (Pets p : petsList)
+            if (p.getName().equals(pet.getName())){
+                p.setName(pet.getName());
+                p.setInfo(pet.getInfo());
+                p.setImg(pet.getImg());
+                p.setCategory(pet.getCategory());
+            }
+    }
 }

@@ -9,6 +9,11 @@
 <div th:replace="fragments::myHeader"></div>
 <a href="/dodaj"><p>Dodaj zwierzaka</p></a>
 
+<form method="get" action="/">
+    <input type="text" placeholder="czego szukamy" name="serchParam">
+    <input type="submit" value="Szukaj">
+</form>
+
 <ul th:replace="fragments::category"></ul>
 
 <div th:each="pet:${pets}">
@@ -18,8 +23,6 @@
     <p th:text="${pet.getName()}"></p>
 </a>
 </div>
-
-
 
 
 

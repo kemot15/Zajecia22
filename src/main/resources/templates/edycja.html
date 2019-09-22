@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja</title>
+</head>
+<body>
+
+
+<form th:action="@{/edycja}" method="post" th:object="${pet}">
+    <label for="name" >Imię</label>
+    <input type="text" id="name" th:field="*{name}" th:value="${pet.getName()}">
+    <label for="description">Opis</label>
+    <textarea cols="20" th:field="*{info}" rows="30"  id="description" th:value="${pet.getInfo()}"></textarea>
+    <label for="category">Kategoria</label>
+    <select  id="category" th:field="*{category}" th:value="${pet.getCategory()}">
+        <option disabled selected th:value="${pet.getCategory()}">wybierz</option>
+        <option value="DOGS">Psy</option>
+        <option value="CATS">Koty</option>
+        <option value="OTHER">Inne</option>
+    </select>
+    <label for="img">Zdjęcie</label>
+    <input type="text" id="img" th:field="*{img}" th:value="${pet.getImg()}">
+    <input type="submit" value="Zmień">
+
+</form>
+</body>
+</html>

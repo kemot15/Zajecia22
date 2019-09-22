@@ -28,10 +28,22 @@ public class AnimalController {
     }
 
     @GetMapping ("/")
-    public String home (Model model, @RequestParam (required = false) Category category){
+    public String home (Model model, @RequestParam (required = false) Category category, @RequestParam (required = false) String serchParam){
         List<Pets> petsList = petsRepository.showPetsListByCategory(category);
+        if (serchParam!= null)
+        petsList = serchByName(petsList, serchParam);
         model.addAttribute("pets", petsList);
         return "home";
+    }
+
+    private List<Pets> serchByName (List<Pets> petsList, String searchParam){
+        List<Pets> searchedPetsList = new ArrayList<>();
+        for (Pets pets : petsList){
+            if (pets.getName().toUpperCase().contains(searchParam.toUpperCase())){
+                searchedPetsList.add(pets);
+            }
+        }
+        return searchedPetsList;
     }
 
     @GetMapping ("/zwierzak")
@@ -51,5 +63,17 @@ public class AnimalController {
     public String nowy (Pets pet){
         petsRepository.addPetToList(pet);
         return "redirect:/zwierzak?imie=" + pet.getName();
+    }
+
+    @GetMapping ("/edycja")
+    public String editForm (Model model, @RequestParam String name) {
+        model.addAttribute("pet", petsRepository.getPet(name));
+        return ("edycja");
+    }
+
+    @PostMapping ("/edycja")
+    public String edit (Pets pet){
+        petsRepository.editPet(pet);
+        return "redirect:/zwierzak?imie="+pet.getName();
     }
 }
