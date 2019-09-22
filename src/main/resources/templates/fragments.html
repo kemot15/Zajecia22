@@ -1,4 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="myHeader" style="height: 200px"><h2>Schronisko Reksio i Klakier</h2></div>
 
+<div class="head" th:fragment="myHeader"><h2>Schronisko Reksio i Klakier</h2></div>
+
+<ul class="category" th:fragment="category">
+    <li><a href="/">Wszystkie</a></li>
+    <li><a href="/?category=DOGS">Psy</a></li>
+    <li><a href="/?category=CATS" >Koty</a></li>
+    <li><a href="/?category=OTHER">Inne</a></li>
+</ul>

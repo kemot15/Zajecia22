@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.javastart.schronisko.model.Category;
 import pl.javastart.schronisko.model.Pets;
@@ -38,5 +39,17 @@ public class AnimalController {
         Pets pet = petsRepository.getPet(imie);
         model.addAttribute( "pet", pet);
         return "info";
+    }
+
+    @GetMapping("/dodaj")
+    public String addPet (Model model){
+        model.addAttribute("pet", new Pets());
+        return "nowyzwierzak";
+    }
+
+    @PostMapping ("/dodaj")
+    public String nowy (Pets pet){
+        petsRepository.addPetToList(pet);
+        return "redirect:/zwierzak?imie=" + pet.getName();
     }
 }

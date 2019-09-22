@@ -1,0 +1,9 @@
+ul.category {
+    list-style: none;
+    float: left;
+    color: deepskyblue;
+}
+div.head {
+    background: lightgrey;
+    color: cornflowerblue;
+}

@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Dodaj nowego zwierzaka</title>
 </head>
 <body>
-$END$
+
+<div th:replace="fragments::myHeader"></div>
+<a href="/"><p>Powrót do listy</p></a>
+
+<form th:action="@{/dodaj}" method="post" th:object="${pet}">
+    <label for="name">Imię</label>
+    <input type="text" id="name" th:field="*{name}">
+    <label for="description">Opis</label>
+    <textarea cols="20" th:field="*{info}" rows="30"  id="description"></textarea>
+    <label for="category">Kategoria</label>
+    <select  id="category" th:field="*{category}">
+        <option disabled selected value="">wybierz</option>
+        <option value="DOGS">Psy</option>
+        <option value="CATS">Koty</option>
+        <option value="OTHER">Inne</option>
+    </select>
+    <label for="img">Zdjęcie</label>
+    <input type="text" id="img" th:field="*{img}">
+    <input type="submit" value="Dodaj">
+
+</form>
 </body>
 </html>

@@ -49,4 +49,12 @@ public class PetsRepository {
         }
         return null;
     }
+
+    public void addPetToList (String name, String description, String img, Category category){
+        petsList.add(new Pets(name, description, img, category));
+    }
+
+    public void addPetToList (Pets pet){
+        petsList.add(pet);
+    }
 }
